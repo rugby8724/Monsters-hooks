@@ -1,0 +1,49 @@
+import { Component } from 'react'
+
+import logo from './logo.svg'
+import './App.css'
+
+class App extends Component {
+  constructor(){
+    super()
+
+    this.state = {
+      name: {firstName: 'Tad', lastName: 'Pole'},
+      company: 'ZTM'
+    }
+  }
+
+  render(){
+    return (
+      <div className="App">
+        <header className="App-header">
+          <img src={logo} className="App-logo" alt="logo" />
+          <p>
+            Hi {this.state.name.firstName} {this.state.name.lastName} , I work at {this.state.company}
+          </p>
+          <button onClick={() => {
+            // first function is an updater function to update the object for a shallow merge
+            // we pass in state in case we want to update our state based on the previous value of the state
+            // props deals with components, it's different values we can pass to our component, will discuss more later in course
+            this.setState(
+              (state, props) => {
+              return {
+                name: {firstName: 'J', lastName: 'Wise'}
+              }
+            }, 
+            () => {
+              console.log(this.state)
+            })
+            
+          }}>
+            Change Name
+          </button>
+          
+        </header>
+      </div>
+    );
+  }
+  
+}
+
+export default App;
